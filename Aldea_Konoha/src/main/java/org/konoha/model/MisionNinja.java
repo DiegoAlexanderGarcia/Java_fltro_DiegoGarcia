@@ -1,4 +1,4 @@
-package org.konoha.model.DAO;
+package org.konoha.model;
 
 
 public class MisionNinja {

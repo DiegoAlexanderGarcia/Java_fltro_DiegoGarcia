@@ -1,6 +1,8 @@
 package org.konoha.view;
 
-import model.Ninja;
+
+
+import org.konoha.model.Ninja;
 
 import java.util.List;
 

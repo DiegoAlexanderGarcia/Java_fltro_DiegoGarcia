@@ -1,7 +1,8 @@
 package org.konoha.model.DAO;
 
-import conection.DatabaseConection;
 
+
+import org.konoha.DatabaseConection.DatabaseConection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
