@@ -1,6 +1,6 @@
 package org.konoha.controller;
 
-import org.konoha.model.DAO.Ninja;
+import org.konoha.model.Ninja;
 import org.konoha.model.DAO.NinjaDAO;
 import org.konoha.view.NinjaView;
 
@@ -12,7 +12,14 @@ public class NinjaController {
     private NinjaDAO ninjaDAO;
     private NinjaView ninjaView;
 
-    public void ViewNinja() throws SQLException {
-
+    public void NinjaController() throws SQLException {
+        this.ninjaDAO = new NinjaDAO();
+        this.ninjaView = new NinjaView();
     }
+
+    public void NinjaView() throws SQLException {
+        List<String> ninjas = ninjaDAO.listarNinjas();
+        ninjaView.mostrarNinjas(ninjas);
+    }
+
 }

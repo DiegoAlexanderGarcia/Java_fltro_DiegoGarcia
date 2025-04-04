@@ -15,7 +15,7 @@ public class NinjaDAO {
 
     public static List<String> listarNinjas() throws SQLException {
         String sql = "SELECT * FROM Ninja";
-        List<String> lista = new ArrayList<>();
+        List<String> ninja = new ArrayList<>();
 
 
         try (
@@ -23,14 +23,22 @@ public class NinjaDAO {
                 PreparedStatement soli = connection.prepareStatement(sql);
                 ResultSet resultSet = soli.executeQuery();){
             while (resultSet.next()) {
-                lista.add(resultSet.getInt("id")+
+                ninja.add(resultSet.getInt("id")+
                         "-"+ resultSet.getString("nombre")+
+                        "-"+ resultSet.getString("Rango")+
                         "-"+ resultSet.getString("aldea"));
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return lista;
+        return ninja;
+    }
+
+    public static List<String> listarNinjasPorRango(String rango) throws SQLException {
+        List<String> ninjas = new ArrayList<>();
+        String sql = "SELECT * FROM Ninja WHERE Rango = ?";
+
+        try
     }
 
 
