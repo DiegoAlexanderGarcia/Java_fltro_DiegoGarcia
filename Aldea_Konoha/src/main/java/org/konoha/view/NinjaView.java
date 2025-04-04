@@ -26,4 +26,12 @@ public class NinjaView {
             System.out.println(n);
         }
     }
+
+    public void mostrarPorRango(List<String> Ninja){
+        System.out.println("Ninja Por Rango");
+        System.out.println("-----------------------------");
+        for (String nin : Ninja){
+            System.out.println(nin);
+        }
+    }
 }

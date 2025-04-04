@@ -2,6 +2,7 @@ package org.konoha.model.DAO;
 
 
 
+import com.mysql.cj.protocol.Resultset;
 import org.konoha.DatabaseConection.DatabaseConection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,10 +24,10 @@ public class NinjaDAO {
                 PreparedStatement soli = connection.prepareStatement(sql);
                 ResultSet resultSet = soli.executeQuery();){
             while (resultSet.next()) {
-                ninja.add(resultSet.getInt("id")+
-                        "-"+ resultSet.getString("nombre")+
+                ninja.add(resultSet.getInt("ID_Ninja")+
+                        "-"+ resultSet.getString("Nombre")+
                         "-"+ resultSet.getString("Rango")+
-                        "-"+ resultSet.getString("aldea"));
+                        "-"+ resultSet.getString("Aldea"));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -34,13 +35,23 @@ public class NinjaDAO {
         return ninja;
     }
 
-    public static List<String> listarNinjasPorRango(String rango) throws SQLException {
-        List<String> ninjas = new ArrayList<>();
-        String sql = "SELECT * FROM Ninja WHERE Rango = ?";
+    public static List<String> listarNinjaPorRango(String Rango) throws SQLException{
+        String sql = "SELECT * FROM Ninja WHERE ?";
+        List<String> Ninja =new ArrayList<>();
 
-        try
+        try (
+                Connection connection = DatabaseConection.connection();
+                PreparedStatement soli = connection.prepareStatement(sql);
+                ResultSet resultSet = soli.executeQuery();){
+            while (resultSet.next()){
+                Ninja.add(resultSet.getInt("ID_Ninja")+
+                        "-"+ resultSet.getString("Nombre")+
+                        "-"+ resultSet.getString("Rango")+
+                        "-"+ resultSet.getString("Aldea"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Ninja;
     }
-
-
-
 }

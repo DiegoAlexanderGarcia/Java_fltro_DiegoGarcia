@@ -10,16 +10,21 @@ import java.util.List;
 
 public class NinjaController {
     private NinjaDAO ninjaDAO;
-    private NinjaView ninjaView;
+    private NinjaView ninjaView = new NinjaView();;
 
     public void NinjaController() throws SQLException {
         this.ninjaDAO = new NinjaDAO();
-        this.ninjaView = new NinjaView();
+
     }
 
     public void NinjaView() throws SQLException {
         List<String> ninjas = ninjaDAO.listarNinjas();
         ninjaView.mostrarNinjas(ninjas);
+    }
+
+    public void NinjaRangoView() throws SQLException{
+        List<String> Ninjas = ninjaDAO.listarNinjaPorRango();
+        ninjaView.mostrarPorRango(Ninjas);
     }
 
 }
